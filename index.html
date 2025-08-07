@@ -1,232 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VocaLingo AI</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      font-family: 'Poppins', sans-serif;
-      background: #0a0a0a;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    .hero {
-      height: 100vh;
-      background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)),
-        url('https://images.unsplash.com/photo-1602526216436-f15c3a55c4f1?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #8e2de2, #4a00e0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin-bottom: 2rem;
-      color: #ccc;
-    }
-
-    .hero button {
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      background: #8e2de2;
-      border: none;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .hero button:hover {
-      background: #4a00e0;
-    }
-
-    .services {
-      padding: 4rem 2rem;
-      background: #111;
-      text-align: center;
-    }
-
-    .services h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #fff;
-    }
-
-    .service-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .card {
-      background: #1a1a1a;
-      padding: 2rem;
-      border-radius: 12px;
-      width: 300px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      color: #8e2de2;
-    }
-
-    .card p {
-      color: #ccc;
-      font-size: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<!-- Navbar Start -->
-<header>
-  <nav class="navbar">
-    <div class="logo">VocaLingo AI</div>
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="menu-toggle" id="menu-toggle">
-      ☰
+  <!-- Video Background -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="assets/bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>VocaLingo AI</h1>
+      <p>Transform your voice into any language — powered by AI.</p>
+      <a href="#about" class="cta-button">Learn More</a>
     </div>
-  </nav>
-</header>
+  </div>
 
-<style>
-  header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  .logo {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-
-  .nav-links li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-
-  .nav-links li a:hover {
-    color: #00ffff;
-  }
-
-  .menu-toggle {
-    display: none;
-    font-size: 1.8rem;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  @media (max-width: 768px) {
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      background: rgba(0, 0, 0, 0.95);
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem 2rem;
-    }
-
-    .nav-links.show {
-      display: flex;
-    }
-
-    .menu-toggle {
-      display: block;
-    }
-  }
-</style>
-
-<script>
-  const toggleBtn = document.getElementById('menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-</script>
-<!-- Navbar End -->  <section class="hero">
-    <h1>Your Voice, Every Language</h1>
-    <p>AI-powered real-time translation and dubbing platform for global creators, educators, and businesses.</p>
-    <button>Get Started</button>
-  </section>
-
-  <section class="services">
-    <h2>Our Services</h2>
-    <div class="service-cards">
-      <div class="card">
-        <h3>🎧 Real-Time Video Translation</h3>
-        <p>Instantly translate videos into multiple languages with lip-sync precision.</p>
-      </div>
-      <div class="card">
-        <h3>🗣️ Natural Voice Dubbing</h3>
-        <p>Convert any speech into lifelike human voices using cutting-edge AI.</p>
-      </div>
-      <div class="card">
-        <h3>🌍 Multilingual Platform</h3>
-        <p>Support for over 50 global languages with native-level accuracy.</p>
-      </div>
-    </div>
+  <!-- Scroll Triggered Content Placeholder -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We break language barriers through cutting-edge voice translation.</p>
   </section>
 </body>
 </html>
